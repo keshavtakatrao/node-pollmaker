@@ -72,7 +72,7 @@ app.post('/createpoll', async function (req, res) {
         let db = connection.db(DB);
         const user = db.collection('polls').insertOne(req.body)
         var id = (await user).insertedId;
-        TinyURL.shorten('http://localhost:3000/#/poll/'+id, function (response, err) {
+        TinyURL.shorten('https://keshavtakatrao.github.io/pollmaker-react/#/poll/'+id, function (response, err) {
             if (err)
                 console.log(err)
             tinny = response
