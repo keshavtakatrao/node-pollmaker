@@ -77,16 +77,13 @@ app.post('/createpoll', async function (req, res) {
                 console.log(err)
             tinny = response
             pid = JSON.stringify(id)
-            db.collection('polls').updateOne({ _id: id }, { $set: { shortUrl: tinny ,pollid:JSON.stringify(id)} });
+            db.collection('polls').updateOne({ _id: id }, { $set: { shortUrl: tinny  }});
+            res.json({
+                message: 'poll created',
+                shortUrl: tinny
+            })
         });
-
-        res.json({
-            message: 'poll created',
-            pollid: id,
-            shortUrl: tinny
-        })
-
-        db.close
+       db.close
     }
     catch (error) {
 
